@@ -16,21 +16,41 @@ $TempWebFolder = "$env:Temp\BriefingWeb"
 $Port = 8080
 
 
-### Port 8080 Allow Inbound ###
-New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" `
-    -Direction Inbound `
-    -Protocol TCP `
-    -LocalPort 8080 `
-    -Action Allow `
-    -Profile Any
+# Function to check if a rule with a specific name exists
+function RuleExists {
+    param (
+        [string]$RuleName
+    )
+    $rule = Get-NetFirewallRule -DisplayName $RuleName -ErrorAction SilentlyContinue
+    return $null -ne $rule
+}
 
-### Port 8080 Allow Outbound ###
-New-NetFirewallRule -DisplayName "Allow Outbound Port 8080" `
-    -Direction Outbound `
-    -Protocol TCP `
-    -LocalPort 8080 `
-    -Action Allow `
-    -Profile Any
+# Check and create rule "Allow Inbound Port 8080" if it does not exist
+if (-not (RuleExists -RuleName "Allow Inbound Port 8080")) {
+    Write-Output "Creating rule: Allow Inbound Port 8080"
+    New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" `
+        -Direction Inbound `
+        -Protocol TCP `
+        -LocalPort $Port `
+        -Action Allow `
+        -Profile Any
+} else {
+    Write-Output "Rule 'Allow Inbound Port 8080' already exists."
+}
+
+# Check and create rule "Allow Outbound Port 8080" if it does not exist
+if (-not (RuleExists -RuleName "Allow Outbound Port 8080")) {
+    Write-Output "Creating rule: Allow Outbound Port 8080"
+    New-NetFirewallRule -DisplayName "Allow Outbound Port 8080" `
+        -Direction Outbound `
+        -Protocol TCP `
+        -LocalPort $Port `
+        -Action Allow `
+        -Profile Any
+} else {
+    Write-Output "Rule 'Allow Outbound Port 8080' already exists."
+}
+
 
 
 # Function to find the latest HTML file
