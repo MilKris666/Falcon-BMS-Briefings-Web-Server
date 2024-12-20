@@ -21,7 +21,7 @@ How-To Setup:
 
 How to Run:
 
-    Run the script by right-clicking it and selecting Run with PowerShell. Keep the console window open.
+    Run the script by right-clicking it and selecting Run with PowerShell. Keep the console window open or minimize it, don´t close it.
     In the Falcon Mission Scheduler, open a briefing and click Print. This will generate an HTML file, and the script will start the web server.
     The script checks every 5 seconds for updated HTML files and refreshes the web server.
 
