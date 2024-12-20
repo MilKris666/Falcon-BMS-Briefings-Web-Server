@@ -24,7 +24,7 @@ How-To Setup:
 
 How to Run:
 
-    Run the script by right-clicking it and selecting Run with PowerShell. 
+    Run the Falcon_Briefing_WebServer_v1.0.ps1 script by right-clicking it and selecting Run with PowerShell. 
     
     Keep the console window open or minimize it, don´t close it.
     In the Falcon Mission Scheduler, open a briefing and click Print. 
