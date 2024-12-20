@@ -1,5 +1,6 @@
 # Falcon-BMS-Brieings-Web-Server
-This PowerShell script makes the Falcon BMS briefings available to all devices on the network via a browser. The script starts a simple web server on the Falcon BMS computer and automatically updates the latest Briefing.html.
+This PowerShell script makes the Falcon BMS briefings available to all devices on the network via a browser. 
+The script starts a simple web server on the Falcon BMS computer and automatically updates the latest Briefing.html.
 
 
 How-To Setup:
@@ -21,8 +22,10 @@ How-To Setup:
 
 How to Run:
 
-    Run the script by right-clicking it and selecting Run with PowerShell. Keep the console window open or minimize it, don´t close it.
-    In the Falcon Mission Scheduler, open a briefing and click Print. This will generate an HTML file, and the script will start the web server.
+    Run the script by right-clicking it and selecting Run with PowerShell. 
+    Keep the console window open or minimize it, don´t close it.
+    In the Falcon Mission Scheduler, open a briefing and click Print. 
+    This will generate an HTML file, and the script will start the web server.
     The script checks every 5 seconds for updated HTML files and refreshes the web server.
 
 To view the briefing on your phone or tablet, open a browser and enter one of the following addresses:
