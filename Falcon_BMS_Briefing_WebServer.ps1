@@ -16,7 +16,7 @@ $TempWebFolder = "$env:Temp\BriefingWeb"
 $Port = 8080
 
 
-# Function to check if a rule with a specific name exists
+# Function to check Firewall
 function RuleExists {
     param (
         [string]$RuleName
