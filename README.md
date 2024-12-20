@@ -8,7 +8,7 @@ How-To Setup:
     Enable PowerShell Script Execution Policy:
     Open PowerShell as Administrator and enter the following command:
     
-    Set-ExecutionPolicy RemoteSigned
+    Set-ExecutionPolicy Unrestricted
 
 
     Adjust the Falcon BMS Installation Path in the Script (found in line 10):
@@ -24,7 +24,9 @@ How-To Setup:
 
 How to Run:
 
-    Run the Falcon_BMS_Briefing_WebServer.ps1 script by right-clicking it and selecting Run with PowerShell. 
+    Run the Falcon_BMS_Briefing_WebServer.ps1 script by right-clicking it and 
+    selecting Run with PowerShell. 
+    The script's execution must be confirmed once during its first run.
     
     Keep the console window open or minimize it, don´t close it.
     In the Falcon Mission Scheduler, open a briefing and click Print. 
