@@ -12,7 +12,7 @@ How-To Setup:
     Adjust the Falcon BMS Installation Path in the Script:
     Right-click the script and select Edit. Update the path in the script:
     Line 10:
-    $BriefingFolder = "G:\Falcon BMS 4.37\User\Briefings"
+    $BriefingFolder = "C:\Falcon BMS 4.37\User\Briefings"
 
     Enable HTML Briefings in the Falcon BMS Config:
     Open the Falcon Launcher and go to Config.
@@ -23,6 +23,7 @@ How-To Setup:
 How to Run:
 
     Run the script by right-clicking it and selecting Run with PowerShell. 
+    
     Keep the console window open or minimize it, don´t close it.
     In the Falcon Mission Scheduler, open a briefing and click Print. 
     This will generate an HTML file, and the script will start the web server.
