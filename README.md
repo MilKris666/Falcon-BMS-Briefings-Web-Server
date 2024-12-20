@@ -7,11 +7,13 @@ How-To Setup:
 
     Enable PowerShell Script Execution Policy:
     Open PowerShell as Administrator and enter the following command:
+    
     Set-ExecutionPolicy RemoteSigned
 
-    Adjust the Falcon BMS Installation Path in the Script:
+
+    Adjust the Falcon BMS Installation Path in the Script (found in line 10):
     Right-click the script and select Edit. Update the path in the script:
-    Line 10:
+    
     $BriefingFolder = "C:\Falcon BMS 4.37\User\Briefings"
 
     Enable HTML Briefings in the Falcon BMS Config:
