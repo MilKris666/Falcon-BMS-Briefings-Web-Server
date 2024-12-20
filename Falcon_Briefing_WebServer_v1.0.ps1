@@ -1,4 +1,4 @@
-﻿If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
 {
     Write-Host "Script is starting..."
     $arguments = "& '" + $myinvocation.mycommand.definition + "'"
@@ -15,39 +15,22 @@ $TempWebFolder = "$env:Temp\BriefingWeb"
 # Port for the HTTP server
 $Port = 8080
 
-# Rule name for identification
-$RuleName = "Allow Outbound Port 8080"
 
-# Function to check if the rule exists
-function Test-PortRuleExists {
-    param (
-        [int]$Port,
-        [string]$RuleName
-    )
+### Port 8080 Allow Inbound ###
+New-NetFirewallRule -DisplayName "Allow Inbound Port 8080" `
+    -Direction Inbound `
+    -Protocol TCP `
+    -LocalPort 8080 `
+    -Action Allow `
+    -Profile Any
 
-    $rule = Get-NetFirewallRule -DisplayName $RuleName -ErrorAction SilentlyContinue
-    if ($rule) {
-        $portFilter = Get-NetFirewallPortFilter -AssociatedNetFirewallRule $rule
-        return $portFilter.LocalPort -eq $Port
-    }
-    return $false
-}
-
-# Check if the rule already exists
-if (-not (Test-PortRuleExists -Port $Port -RuleName $RuleName)) {
-    Write-Host "Port $Port is not open. Creating rule." -ForegroundColor Yellow
-
-    # Create a rule to open port 8080 for outbound traffic for all network profiles
-    New-NetFirewallRule -DisplayName $RuleName -Direction Outbound -Protocol TCP -LocalPort $Port -Action Allow -Profile Any
-
-    if ($?) {
-        Write-Host "Rule created successfully: Port $Port is now open for outbound traffic." -ForegroundColor Green
-    } else {
-        Write-Host "Error creating the rule." -ForegroundColor Red
-    }
-} else {
-    Write-Host "Port $Port is already open for outbound traffic." -ForegroundColor Green
-}
+### Port 8080 Allow Outbound ###
+New-NetFirewallRule -DisplayName "Allow Outbound Port 8080" `
+    -Direction Outbound `
+    -Protocol TCP `
+    -LocalPort 8080 `
+    -Action Allow `
+    -Profile Any
 
 
 # Function to find the latest HTML file
